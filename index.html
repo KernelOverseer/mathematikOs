@@ -1,0 +1,63 @@
+<html>
+
+<head>
+    <title>mathematikOs</title>
+    <script src="v86/libv86.js"></script>
+</head>
+
+<body>
+
+    <script>
+        "use strict";
+
+        window.onload = function () {
+            var emulator = window.emulator = new V86Starter({
+                wasm_path: "v86/v86.wasm",
+                memory_size: 32 * 1024 * 1024,
+                vga_memory_size: 2 * 1024 * 1024,
+                screen_container: document.getElementById("screen_container"),
+                bios: {
+                    url: "v86/seabios.bin",
+                },
+                vga_bios: {
+                    url: "v86/vgabios.bin",
+                },
+                fda: {
+                    url: "/boot.bin",
+                },
+                autostart: true,
+            });
+        }
+    </script>
+    <div id="center">
+        <div id="screen_container">
+            <div id="screen" style="white-space: pre; font: 14px monospace; line-height: 14px"></div>
+            <canvas style="display: none"></canvas>
+        </div>
+    </div>
+</body>
+<style>
+    body {
+        background-color: #111;
+        color: #fff;
+        line-height: 1.5;
+        padding: 10px;
+        font-family: sans-serif;
+    }
+
+    #screen_container {
+        float: left;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        outline: 1px solid #555;
+    }
+
+    #center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+</style>
+
+</html>
