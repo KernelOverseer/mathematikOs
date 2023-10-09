@@ -3,9 +3,9 @@
 #define VGA_COLS 80
 #include <stdint.h>
 
-uint16_t *VGA_MEMORY;
-uint8_t	TERMINAL_COL;
-uint8_t TERMINAL_ROW;
+uint16_t *VGA_MEMORY = (uint16_t *)0xB8000;
+uint8_t	TERMINAL_COL = 0;
+uint8_t TERMINAL_ROW = 0;
 
 uint16_t terminal_create_char(char character, char color)
 {
@@ -58,9 +58,6 @@ void terminal_putstr(char *str)
 void kernel_main()
 {
 	char str[] = "Hello World\nthis is an example";
-	VGA_MEMORY = (uint16_t *)0xB8000;
-	TERMINAL_COL = 0;
-	TERMINAL_ROW = 0;
 	terminal_clear();
 	terminal_putstr(str);
 }
