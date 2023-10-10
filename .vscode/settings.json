@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "stddef.h": "c"
+        "stddef.h": "c",
+        "idt.h": "c",
+        "memory.h": "c"
     }
 }
