@@ -1,0 +1,17 @@
+#ifndef KEYBOARD_H
+#define KEYBOARD_H
+#include <stdint.h>
+
+#define SCANCODE_ARROW_UP 0x48
+#define SCANCODE_ARROW_LEFT 0x4B
+#define SCANCODE_ARROW_RIGHT 0x4D
+#define SCANCODE_ARROW_DOWN 0x50
+
+#define SCANCODE_ARROW_UP_RELEASE 0xC8
+#define SCANCODE_ARROW_LEFT_RELEASE 0xCB
+#define SCANCODE_ARROW_RIGHT_RELEASE 0xCD
+#define SCANCODE_ARROW_DOWN_RELEASE 0xD0
+
+void keyboard_handler();
+
+#endif

@@ -12,6 +12,10 @@ start:
 	mov ss, ax     ; setting the stack segment
 	mov sp, 0x7c00 ; setting the stack pointer
 
+    sti
+    call enable_graphics_mode
+    cli
+
 	; enabling A20 line
 	in   al,   0x92
 	or   al,   2
@@ -25,6 +29,13 @@ start:
 
 	jmp CODE_SEG:load32
 
+enable_graphics_mode:
+    ; switching to graphics mode
+    mov ah, 0
+    mov al, 13h ; for vga 8 bit graphics
+    int 0x10
+    ret
+
 [BITS 32]
 load32:
     mov eax, 1
@@ -32,6 +43,7 @@ load32:
     mov edi, 0x0100000
     call ata_lba_read
     jmp CODE_SEG:0x0100000
+    jmp $
 
 gdt_start: ; Start of our GDT
 gdt_null:  ; First Null GDT entry
