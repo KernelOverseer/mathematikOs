@@ -12,6 +12,10 @@ start:
 	mov ss, ax     ; setting the stack segment
 	mov sp, 0x7c00 ; setting the stack pointer
 
+    sti
+    call enable_graphics_mode
+    cli
+
 	; enabling A20 line
 	in   al,   0x92
 	or   al,   2
@@ -24,6 +28,13 @@ start:
 	mov  cr0,  eax
 
 	jmp CODE_SEG:load32
+
+enable_graphics_mode:
+    ; switching to graphics mode
+    mov ah, 0
+    mov al, 13h ; for vga 8 bit graphics
+    int 0x10
+    ret
 
 [BITS 32]
 load32:

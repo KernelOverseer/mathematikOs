@@ -33,6 +33,17 @@ void terminal_putchar(char c)
 		TERMINAL_COL = 0;
 		return;
 	}
+	if (c == '\b')
+	{
+		TERMINAL_COL--;
+		if (TERMINAL_COL < 0)
+		{
+			TERMINAL_COL = VGA_COLS - 1;
+			TERMINAL_ROW--;
+		}
+		terminal_put_character(TERMINAL_COL, TERMINAL_ROW, ' ', 0);
+		return;
+	}
 	terminal_put_character(TERMINAL_COL, TERMINAL_ROW, c, 10);
 	TERMINAL_COL++;
 	if (TERMINAL_COL > VGA_COLS)

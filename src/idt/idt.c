@@ -22,14 +22,6 @@ void int0_handler(void);
 void int21_handler(void);
 void ozaazaa(void);
 
-void keyboard_handler(void)
-{
-    terminal_putchar('#');
-    uint8_t scancode = insb(0x60);
-    terminal_puthex(scancode);
-    terminal_putchar('\n');
-}
-
 void handle_zero(void)
 {
     terminal_putchar('#');

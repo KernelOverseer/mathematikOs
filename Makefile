@@ -1,4 +1,12 @@
-C_FILES = ./build/kernel.o ./build/terminal/terminal.o ./build/idt/idt.o ./build/memory/memory.o
+C_FILES = ./build/kernel.o \
+		./build/terminal/terminal.o \
+		./build/idt/idt.o \
+		./build/memory/memory.o \
+		./build/keyboard/keyboard.o \
+		./build/math/fixed_point.o \
+		./build/graphics/graphics.o \
+		./build/math/vectors.o
+
 ASM_FILES = ./build/kernel.asm.o ./build/idt/idt.asm.o ./build/io/io.asm.o
 FILES = $(ASM_FILES) $(C_FILES)
 INCLUDES = -I./src

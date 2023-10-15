@@ -2,6 +2,7 @@
     "files.associations": {
         "stddef.h": "c",
         "idt.h": "c",
-        "memory.h": "c"
+        "memory.h": "c",
+        "terminal.h": "c"
     }
 }
