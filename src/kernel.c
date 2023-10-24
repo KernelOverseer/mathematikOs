@@ -19,13 +19,13 @@ void kernel_main()
 {
 	idt_init();
 
-	int iter = 0;
-	int ipf = 1;
+	// int iter = 0;
+	// int ipf = 1;
 	while (1)
 	{
-		if (iter % ipf == 0)
-			draw_loop();
-		iter++;
+		draw_loop();
+		// if (iter % ipf == 0)
+		// iter++;
 	}
 }
 
@@ -159,13 +159,13 @@ void move_player(struct object *player)
 
 	if (is_key_pressed(KEY_W))
 	{
-		player->acc_x += direction.x * 0.1;
-		player->acc_y += direction.y * 0.1;
+		player->acc_x += direction.x * 0.2;
+		player->acc_y += direction.y * 0.2;
 	}
 	if (is_key_pressed(KEY_S))
 	{
-		player->acc_x -= direction.x * 0.10;
-		player->acc_y -= direction.y * 0.10;
+		player->acc_x -= direction.x * 0.2;
+		player->acc_y -= direction.y * 0.2;
 	}
 
 	player->speed_x += player->acc_x;
